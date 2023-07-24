@@ -1,8 +1,11 @@
 const express = require('express')
 var morgan = require('morgan')
+const cors = require('cors')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
+app.use(express.static('build'))
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :param'));
 
@@ -44,11 +47,6 @@ const verifyUniqueName = (name) => {
   if (result) return false
   return true
 }
-
-
-app.get('/', (req, res) => {
-  res.send('<h1>Welcome to Phone book backend</h1>')
-})
 
 app.get('/api/persons', (req, res) => {
   res.json(persons)
@@ -103,7 +101,7 @@ app.post('/api/persons', (req, res) => {
   
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
