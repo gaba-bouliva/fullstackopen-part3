@@ -4,7 +4,6 @@ const Person = require('./models/person')
 const express = require('express')
 var morgan = require('morgan')
 const cors = require('cors')
-const request = require('http').request
 
 
 const app = express()
