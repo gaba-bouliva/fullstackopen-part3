@@ -1,8 +1,9 @@
+require('dotenv').config()
 const mongoose = require("mongoose")
 
 mongoose.set('strictQuery', false)
 
-const url = `mongodb+srv://fullstackopen_mongo_db:JPHEPfpwhYve1XQF@cluster0.pfgeizt.mongodb.net/phonebookApp`
+const url = process.env.MONGODB_URI
 
 console.log('connecting to', url);
 
