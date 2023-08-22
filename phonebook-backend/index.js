@@ -66,7 +66,7 @@ app.put('/api/persons/:id', (req, res, next) => {
   }).catch(error => next(error))
 })
 
-app.post('/api/persons', (req, res) => {
+app.post('/api/persons', (req, res, next) => {
   const newPerson = req.body
     
     if (!newPerson || !newPerson.hasOwnProperty('name') || !newPerson.hasOwnProperty('number')) {
@@ -81,7 +81,7 @@ app.post('/api/persons', (req, res) => {
     
     person.save().then(savedPerson => {
       res.json(savedPerson)
-    })
+    }).catch( error => next(error))
 
   
 })
