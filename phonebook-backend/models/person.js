@@ -1,18 +1,20 @@
 require('dotenv').config()
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 mongoose.set('strictQuery', false)
 
+// eslint-disable-next-line no-undef
 const url = process.env.MONGODB_URI
 
-console.log('connecting to', url);
+console.log('connecting to', url)
 
 mongoose.connect(url).then(
-  result => {
-    console.log('Connected to MongoDB');
+  () => {
+    console.log('Connected to MongoDB')
   }
 ).catch(err => {
-  console.log(err.message);
+  console.log(err.message)
+  // eslint-disable-next-line no-undef
   process.exit(1)
 })
 
@@ -27,7 +29,7 @@ const personSchema = new mongoose.Schema({
     minLength: 8,
     validate: {
       validator: function(v) {
-        return /\d{2,3}-\d{8}/.test(v);
+        return /\d{2,3}-\d{8}/.test(v)
         
       },
       message: props => `${props.value} is not a valid phone number!`
