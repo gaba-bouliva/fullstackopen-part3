@@ -18,7 +18,7 @@ morgan.token('param', function(req, res) {
   return JSON.stringify(req.body)
 })
 
-console.log('person length : ', Person.length())
+console.log('person length : ', Person.length)
 
 app.get('/api/persons', (_req, res) => {
   Person.find({}).then(persons => { 
